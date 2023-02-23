@@ -1,51 +1,6 @@
-<% if @book.errors.any? %>
-  <%= @book.errors.count %>errors prohibited this obj from being saved:
-  <ul>
-    <% @book.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
-
 <%= flash[:notice] %>
 
-<div class="container px-5 px-sm-0">
- <div class="row">
-  <div class="col-md-3">
-   <h1>User info</h1>
-　  <table class="table">
-　　 <tbody>
-      <tr>
-       <th>
-        <%= image_tag current_user.get_profile_image(100,100) %>
-       </th>
-      </tr>
-      <tr>
-       <th>name</th>
-       <th>
-         <%= current_user.name %>
-       </th>
-      </tr>
-      <tr>
-       <th>introduction</th>
-       <th><%= current_user.introduction %></th>
-      </tr>
-  　  </tbody>
-　  </table>
-     <div>
-     <%= link_to edit_user_path(@user.id), class: 'btn btn-outline-secondary btn-block' do %>
-       <i class="fas fa-user-cog"></i>
-      <% end %>
-      <h2>New book</h2>
-      <%= form_with model: @book do |f| %>
-      <h4>Title</h4>
-        <%= f.text_field :title %>
-      <h4>Opinion</h4>
-        <%= f.text_area :body %><br>
-        <%= f.submit 'Create Book', class: 'btn btn-success btn-lg' %>
-     <% end %>
-     </div>
-    </div>
+<%= render 'list', book: @books %>
 
   <div class="col-md-8 offset-md-1">
    <h2>Books</h2>

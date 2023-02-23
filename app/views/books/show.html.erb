@@ -1,15 +1,13 @@
 
-<%= render 'list', book: @book_new %>
+<%= render 'list', book: @new_book, user: @user %>
 
-<div class="container">
- <div class="row">
   <div class="col-md-8 offset-md-1">
    <h1>Book detail</h1>
    <table class="table">
     <tbody>
      <tr>
       <td>
-         <%= link_to user_path(current_user) do %>
+         <%= link_to user_path(@book.user.id) do %>
           <%= image_tag @book.user.get_profile_image(100,100) %><br>
           <%= @book.user.name %>
          <% end %>

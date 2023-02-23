@@ -1,11 +1,11 @@
-      <% if @user.errors.any? %>
-       <%= @user.errors.count %>errors prohibited this obj from being saved:
-       <ul>
-        <% @user.errors.full_messages.each do |message| %>
-           <li><%= message %></li>
-         <% end %>
-       </ul>
-      <% end %>
+<% if @user.errors.any? %>
+  <%= @user.errors.count %>errors prohibited this obj from being saved:
+    <ul>
+     <% @user.errors.full_messages.each do |message| %>
+       <li><%= message %></li>
+     <% end %>
+    </ul>
+<% end %>
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
@@ -13,15 +13,15 @@
       <%= form_with model: @user do |f| %>
        <div class="form-group">
         <label for="user_Name">Name</label>
-        <input class="form-control name" value="name4" tyoe="text" name="user[name]" id="user_name">
+        <%= f.text_field :name,autofocus: true, id:"user_Name", class: "form-control" %>
        </div>
        <div class="form-group">
-        <label for="user_profile_image">Image</label>
-        <input class="form-control-file profile_image" accept="image/*" type="file" name="user[profile_image]" id="user_profile_image">
+        <label for="user_profile_image">Image</label><br>
+        <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>
        </div>
        <div class="form-group">
         <label for="user_Introduction">Introduction</label>
-        <textarea class="form-control introduction" name="user[introduction]" id="user_introduction"></textarea>
+        <%= f.text_area :introduction,autofocus: true, id:"user_Introduction", class: "form-control" %>
        </div>
        <div class="form-group">
         <input type="submit" name="commit" value="Update User" class="btn btn-secondary" data-disable-with="Update User">

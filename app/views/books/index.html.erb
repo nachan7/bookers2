@@ -1,6 +1,6 @@
 <%= flash[:notice] %>
 
-<%= render 'list', book: @books %>
+<%= render 'list', book: @book, user: @user %>
 
   <div class="col-md-8 offset-md-1">
    <h2>Books</h2>
@@ -11,12 +11,12 @@
        <th>Title</th>
        <th>Opinion</th>
      </tr>
-    </thade>
+    </thead>
     <tbody>
     <% @books.each do |book| %>
      <tr>
        <td>
-         <%= link_to user_path(@user.id) do %>
+         <%= link_to user_path(book.user.id) do %>
           <%= image_tag book.user.get_profile_image(100,100) %>
          <% end %>
        </td>
